@@ -1,1 +1,0 @@
-# Terminal game of life
