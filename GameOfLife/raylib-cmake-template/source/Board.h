@@ -1,5 +1,6 @@
 #pragma once
 #include <raylib.h>
+
 #include <vector>
 
 using namespace std;
@@ -11,7 +12,7 @@ public:
   float cellSize;
   Color cellColor;
 
-  Board(int xNum, int yNum, float cellSize, int initialActive);
+  Board(int xNum, int yNum, float cellSize, int initialActive, Color cellColor);
 
   int getCell(int x, int y);
   void draw();

@@ -1,5 +1,6 @@
 #include "Board.h"
 
+#include <iostream>
 #include <raylib.h>
 
 #include <cstdlib>
@@ -7,10 +8,16 @@
 
 using namespace std;
 
-Board::Board(int xNum, int yNum, float cellSize, int initialActive)
-    : cellsXNum(xNum), cellsYNum(yNum), cellSize(cellSize), cellColor(BLUE),
-      grid(xNum, vector<int>(yNum, 0)) {
-  srand(time(nullptr));
+Board::Board(int xNum, int yNum, float cellSize, int initialActive,
+             Color cellColor)
+    : cellsXNum(xNum), cellsYNum(yNum), cellSize(cellSize),
+      cellColor(cellColor), grid(xNum, vector<int>(yNum, 0)) {
+  time_t t;
+  time_t* tPtr = &t;
+
+  srand(time(tPtr));
+
+  cout << t << endl;
 
   int placedCells = 0;
 
@@ -31,7 +38,8 @@ void Board::draw() {
   for (int x = 0; x < cellsXNum; x++) {
     for (int y = 0; y < cellsYNum; y++) {
       if (this->getCell(x, y) == 1) {
-        DrawRectangle(x * cellSize, y * cellSize, cellSize, cellSize, cellColor);
+        DrawRectangle(x * cellSize, y * cellSize, cellSize, cellSize,
+                      cellColor);
       }
     }
   }

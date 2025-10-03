@@ -8,11 +8,11 @@ constexpr int SCREEN_WIDTH = 1400;
 constexpr int SCREEN_HEIGHT = 800;
 constexpr const char *WINDOW_TITLE = "Game of life";
 
-constexpr int cellsXNum = 400;
+constexpr int cellsXNum = 350;
 constexpr float cellSize = (float)SCREEN_WIDTH / cellsXNum;
 constexpr int cellsYNum = SCREEN_HEIGHT / cellSize;
 
-constexpr int initialActiveCells = 10000;
+constexpr int initialActiveCells = 6500;
 
 using namespace std;
 
@@ -28,9 +28,9 @@ int main(void) {
   int framesCounter = 0;
   SetTargetFPS(120);
 
-  Board board(cellsXNum, cellsYNum, cellSize, initialActiveCells);
+  Board board(cellsXNum, cellsYNum, cellSize, initialActiveCells, WHITE);
 
-  const int updateInterval = 1;
+  const int updateInterval = 5;
 
   // Main game loop
   while (!WindowShouldClose()) {
@@ -42,6 +42,8 @@ int main(void) {
       board.update();
     }
 
+    int fps = GetFPS();
+
     // Draw
     //--------------------------------------------------------------------------
 
@@ -49,6 +51,7 @@ int main(void) {
 
     ClearBackground(BLACK);
     board.draw();
+    DrawText(TextFormat("FPS: %d", fps), 10, 10, 20, GREEN);
 
     EndDrawing();
   }
