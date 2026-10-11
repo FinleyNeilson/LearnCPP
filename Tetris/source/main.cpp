@@ -28,10 +28,10 @@ int main(void) {
     }
     if (IsKeyDown(KEY_LEFT)) {
       ballX -= 3;
-    } 
+    }
     if (IsKeyDown(KEY_UP)) {
       ballY -= 3;
-    } 
+    }
     if (IsKeyDown(KEY_DOWN)) {
       ballY += 3;
     }
